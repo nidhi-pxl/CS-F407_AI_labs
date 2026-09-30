@@ -1,0 +1,74 @@
+I want to implement a simple planning agent in Python.
+
+Represent a state as a set of logical propositions.
+
+Each action should contain:
+- a name
+- positive preconditions
+- negative preconditions
+- positive effects
+- negative effects
+
+An action is applicable if all of its preconditions are satisfied by
+the current state.
+
+When an action is applied:
+1. remove its negative effects from the state;
+2. add its positive effects to the state.
+
+Use breadth-first search to find a sequence of actions that achieves
+a specified goal.
+
+The program should also:
+- detect when no plan exists;
+- print the resulting sequence of actions;
+- print the states reached after each action.
+
+Implement the following warehouse planning problem.
+
+Initial state:
+{
+    At(Robot,A),
+    At(Package,A)
+}
+
+Goal:
+{
+    At(Package,C)
+}
+
+Locations are A, B and C.
+
+Available movement:
+A <-> B
+B <-> C
+
+Actions:
+
+Move(X,Y):
+Precondition:
+    At(Robot,X)
+Positive effect:
+    At(Robot,Y)
+Negative effect:
+    At(Robot,X)
+
+PickUp(Package,X):
+Preconditions:
+    At(Robot,X)
+    At(Package,X)
+Positive effect:
+    Holding(Package)
+Negative effect:
+    At(Package,X)
+
+Drop(Package,X):
+Preconditions:
+    At(Robot,X)
+    Holding(Package)
+Positive effect:
+    At(Package,X)
+Negative effect:
+    Holding(Package)
+
+Generate the Python program and explain the implementation.

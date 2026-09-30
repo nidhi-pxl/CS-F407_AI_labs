@@ -1,0 +1,72 @@
+MANUAL PLAN
+
+Initial state S0:
+
+{
+    At(Robot,A),
+    At(Package,A)
+}
+
+
+Action 1:
+PickUp(Package,A)
+
+Preconditions:
+    At(Robot,A) ✓
+    At(Package,A) ✓
+
+State S1:
+
+{
+    At(Robot,A),
+    Holding(Package)
+}
+
+
+Action 2:
+Move(A,B)
+
+Precondition:
+    At(Robot,A) ✓
+
+State S2:
+
+{
+    At(Robot,B),
+    Holding(Package)
+}
+
+
+Action 3:
+Move(B,C)
+
+Precondition:
+    At(Robot,B) ✓
+
+State S3:
+
+{
+    At(Robot,C),
+    Holding(Package)
+}
+
+
+Action 4:
+Drop(Package,C)
+
+Preconditions:
+    At(Robot,C) ✓
+    Holding(Package) ✓
+
+Final state S4:
+
+{
+    At(Robot,C),
+    At(Package,C)
+}
+
+
+Goal:
+At(Package,C) ✓
+
+Therefore the plan is valid.

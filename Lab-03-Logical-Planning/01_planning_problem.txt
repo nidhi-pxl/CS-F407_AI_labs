@@ -1,0 +1,75 @@
+LOGICAL REASONING LAB
+Planning Problem Specification
+
+1. Initial State
+
+I = {
+    At(Robot,A),
+    At(Package,A)
+}
+
+The robot starts at location A.
+The package starts at location A.
+
+
+2. Goal
+
+G = {
+    At(Package,C)
+}
+
+The goal is to transport the package from A to C.
+
+
+3. Available Actions
+
+A. Move(X,Y)
+
+Precondition:
+    At(Robot,X)
+
+Positive effects:
+    At(Robot,Y)
+
+Negative effects:
+    At(Robot,X)
+
+
+B. PickUp(Package,X)
+
+Preconditions:
+    At(Robot,X)
+    At(Package,X)
+
+Positive effect:
+    Holding(Package)
+
+Negative effect:
+    At(Package,X)
+
+
+C. Drop(Package,X)
+
+Preconditions:
+    At(Robot,X)
+    Holding(Package)
+
+Positive effect:
+    At(Package,X)
+
+Negative effect:
+    Holding(Package)
+
+
+4. Connected Locations
+
+A is connected to B.
+B is connected to A.
+B is connected to C.
+C is connected to B.
+
+Therefore, the robot can move:
+    A -> B
+    B -> A
+    B -> C
+    C -> B

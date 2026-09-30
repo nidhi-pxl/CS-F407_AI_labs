@@ -1,0 +1,86 @@
+PYTHON PLANNER TEST RESULTS
+===========================
+
+
+TEST A: Solvable Problem
+============================================================
+
+Plan found:
+
+1. PickUp(Package,A)
+2. Move(A,B)
+3. Move(B,C)
+4. Drop(Package,C)
+
+States:
+
+S0:
+    At(Package,A)
+    At(Robot,A)
+
+S1:
+    At(Robot,A)
+    Holding(Package)
+
+S2:
+    At(Robot,B)
+    Holding(Package)
+
+S3:
+    At(Robot,C)
+    Holding(Package)
+
+S4:
+    At(Package,C)
+    At(Robot,C)
+
+
+TEST B: Impossible Problem
+============================================================
+No plan found
+
+TEST C: Irrelevant Action
+============================================================
+
+No plan found
+
+
+
+
+
+VERIFICATION
+============
+
+Test A:
+The returned plan is valid.
+
+PickUp(Package,A) is applicable because:
+    At(Robot,A) ✓
+    At(Package,A) ✓
+
+Move(A,B) is applicable because:
+    At(Robot,A) ✓
+
+Move(B,C) is applicable because:
+    At(Robot,B) ✓
+
+Drop(Package,C) is applicable because:
+    At(Robot,C) ✓
+    Holding(Package) ✓
+
+The final state contains At(Package,C), so the goal is achieved.
+
+
+Test B:
+The result "No plan found" is correct.
+
+The PickUp actions were removed, so the robot can never obtain
+Holding(Package). Therefore the package cannot be transported to C.
+
+
+Test C:
+The result "No plan found" is correct.
+
+The only available action moves the robot. It does not move the
+package. Therefore moving the robot cannot satisfy the goal
+At(Package,C).

@@ -1,0 +1,61 @@
+TASK 6 — PROLOG AS A PLAN VERIFIER
+===================================
+
+
+Query:
+
+?- can_move(a,b).
+
+Output:
+
+true.
+
+
+Query:
+
+?- can_move(a,c).
+
+Output:
+
+false.
+
+
+Questions
+---------
+
+(a) Why does Prolog return true for can_move(a,b)?
+
+Because the knowledge base contains the fact:
+
+connected(a,b).
+
+The rule:
+
+can_move(X,Y) :-
+    connected(X,Y).
+
+therefore allows Prolog to infer can_move(a,b).
+
+
+(b) Why does it not establish can_move(a,c)?
+
+Because connected(a,c) is not present in the knowledge base.
+
+The current rule represents direct connectivity. Although there is a
+path from a to c through b, the rule does not define multi-step
+reachability.
+
+
+(c) What is the relationship between the Prolog rule and the logical
+implication Connected(X,Y) -> CanMove(X,Y)?
+
+The Prolog rule:
+
+can_move(X,Y) :-
+    connected(X,Y).
+
+represents the same basic implication:
+
+Connected(X,Y) -> CanMove(X,Y).
+
+If Connected(X,Y) is true, CanMove(X,Y) can be inferred.

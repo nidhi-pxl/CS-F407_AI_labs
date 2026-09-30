@@ -1,0 +1,74 @@
+TASK 7 — USING PROLOG TO CHECK A PROPOSED PLAN
+================================================
+
+
+Proposed Python plan:
+
+Move(a,b)
+Move(b,c)
+
+
+Query 1:
+
+?- valid_move(a,b).
+
+Output:
+
+true.
+
+
+Query 2:
+
+?- valid_move(b,c).
+
+Output:
+
+true.
+
+
+Query 3:
+
+?- valid_move(a,c).
+
+Output:
+
+false.
+
+
+Challenge
+---------
+
+Suppose the Python planner proposes:
+
+Move(a,c).
+
+
+Query:
+
+?- valid_move(a,c).
+
+Output:
+
+false.
+
+
+Explanation:
+
+Move(a,c) is not supported by the warehouse knowledge base because
+there is no direct connected(a,c) fact.
+
+The warehouse contains:
+
+connected(a,b).
+connected(b,c).
+
+but it does not contain:
+
+connected(a,c).
+
+
+Conclusion:
+
+The Python planner generates a candidate action, while Prolog
+independently verifies whether the action is supported by the
+logical description of the warehouse.
